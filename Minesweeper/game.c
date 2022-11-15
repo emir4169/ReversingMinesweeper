@@ -92,9 +92,9 @@ void InitializeNewGame() {
     InitializeBlockArrayBorders();
 
     GlobalSmileId = 0;
-
+    int TilesInGame = Width*Height;
     // Setup all the mines
-    Mines_Copy = GameConfig.Mines;
+    Mines_Copy = TilesInGame - 1;
 
     do {
         BoardPoint randomPoint;
@@ -117,7 +117,7 @@ void InitializeNewGame() {
     Mines_Copy = GameConfig.Mines;
     LeftFlags = Mines_Copy;
     NumberOfRevealedBlocks = 0;
-    NumberOfEmptyBlocks = (Height * Width) - GameConfig.Mines;
+    NumberOfEmptyBlocks = 1;
     StateFlags = STATE_GAME_IS_ON;
     AddAndDisplayLeftFlags(0); // Should have called DisplayLeftFlags()!
     InitializeWindowBorder(borderFlags);
@@ -142,7 +142,7 @@ void RevealAllBombs(BYTE revealedBombsState) {
             }
             else if (blockState == BLOCK_STATE_FLAG) {
                 // This is not a bomb, but flagged by the user
-                *pBlock = (*pBlock & 0xeb) | BLOCK_STATE_BOMB_WITH_X;
+                *pBlock = (*pBlock & 0xe0) | revealedBombsState;
             }
         }
     }

@@ -122,7 +122,7 @@ void InitializeConfigFromRegistry() {
     GameConfig.Width = GetIntegerFromRegistry(CONFIG_WIDTH, 9, 9, 25);
     Width = GameConfig.Width;
     GameConfig.Difficulty = GetIntegerFromRegistry(CONFIG_DIFFICULTY, 0, 0, 3);
-    GameConfig.Mines = GetIntegerFromRegistry(CONFIG_MINES, 10, 10, 999);
+    GameConfig.Mines = GetIntegerFromRegistry(CONFIG_MINES, 999, 0, 999);
     GameConfig.Xpos = GetIntegerFromRegistry(CONFIG_XPOS, 80, 0, 1024);
     GameConfig.Ypos = GetIntegerFromRegistry(CONFIG_YPOS, 80, 0, 1024);
     GameConfig.Sound = GetIntegerFromRegistry(CONFIG_SOUND, 0, 0, 3);
